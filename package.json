@@ -1,0 +1,23 @@
+{
+  "name": "yelp-alike",
+  "version": "1.0.0",
+  "description": "Bai tap Buoi 10, viet cac API theo cac chuc nang like, danh gia nha hang, dat mon, lay danh sach doi tuong thi GET API truyen vao ma id cua doi tuong do",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Vo / Vo H. Viet Tu",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.14.0",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "extensionless": "^1.9.9",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.3",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.14.0",
+    "sequelize": "^6.37.7",
+    "sequelize-auto": "^0.8.8"
+  }
+}
