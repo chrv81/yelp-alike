@@ -1,3 +1,12 @@
+import { foodService } from '../services/food.service.js';
+
+// Mock responseSuccess function - you should implement this properly
+const responseSuccess = (data, message) => ({
+  statusCode: 200,
+  message,
+  data
+});
+
 export const foodController = {
    create: async function (req, res, next) {
       const result = await foodService.create(req);
