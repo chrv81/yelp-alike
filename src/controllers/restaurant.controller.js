@@ -68,10 +68,10 @@ export const restaurantController = {
 
   getLikes: async (req, res, next) => {
     const result = await restaurantService.getLikes(req);
-    const { restaurantId } = req.params;
+    const { id } = req.params;
     const response = responseSuccess(
       result,
-      `Get likes of restaurant #${restaurantId} successfully`
+      `Get likes of restaurant #${id} successfully`
     );
     res.status(response.statusCode).json(response);
   },
@@ -82,6 +82,16 @@ export const restaurantController = {
     const response = responseSuccess(
       result,
       `Add comment to restaurant #${restaurantId} successfully by user ${userId}`
+    );
+    res.status(response.statusCode).json(response);
+  },
+
+  getComments: async (req, res, next) => {
+    const result = await restaurantService.getComments(req);
+    const { id: restaurantId } = req.params;
+    const response = responseSuccess(
+      result,
+      `Get comments of restaurant #${restaurantId} successfully`
     );
     res.status(response.statusCode).json(response);
   }

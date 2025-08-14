@@ -108,11 +108,11 @@ export const restaurantService = {
   },
 
   getLikes: async (req) => {
-    const { restaurantId } = req.params;
+    const { id } = req.params;
     
     const likes = await prisma.likes.findMany({
       where: {
-        restaurant_id: parseInt(restaurantId),
+        restaurant_id: parseInt(id),
       },
       include: {
         Users: {
@@ -141,5 +141,23 @@ export const restaurantService = {
     });
 
     return newComment;
+  },
+
+  getComments: async (req) => {
+    const { id: restaurantId } = req.params;
+
+    const comments = await prisma.comments.findMany({
+      where: { restaurant_id: parseInt(restaurantId) },
+      include: {
+        Users: {
+          select: { id: true, username: true }
+        },
+        Restaurants: {
+          select: { id: true, name: true }
+        }
+      }
+    });
+
+    return comments;
   }
 };
