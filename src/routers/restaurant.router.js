@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { restaurantController } from '../controllers/restaurant.controller';
+import { restaurantController } from '../controllers/restaurant.controller.js';
 
 const restaurantRouter = express.Router();
 
@@ -9,6 +9,7 @@ restaurantRouter.post('/', restaurantController.create);
 restaurantRouter.get('/', restaurantController.findAll);
 
 restaurantRouter.post('/likes', restaurantController.likeRestaurant);
+restaurantRouter.delete('/unlikes', restaurantController.unlikeRestaurant);
 
 restaurantRouter.get('/:id', restaurantController.findOne);
 restaurantRouter.patch('/:id', restaurantController.update);

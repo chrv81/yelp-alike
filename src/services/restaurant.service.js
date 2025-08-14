@@ -92,5 +92,17 @@ export const restaurantService = {
     });
 
     return newLike;
+  },
+
+  unlikeRestaurant: async (req) => {
+    const { restaurantId, userId } = req.body;
+    const deletedLike = await prisma.likes.deleteMany({
+      where: {
+        restaurant_id: parseInt(restaurantId),
+        user_id: parseInt(userId),
+      }
+    });
+
+    return deletedLike;
   }
 };
