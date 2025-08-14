@@ -8,7 +8,7 @@ const restaurantRouter = express.Router();
 restaurantRouter.post('/', restaurantController.create);
 restaurantRouter.get('/', restaurantController.findAll);
 
-
+restaurantRouter.post('/likes', restaurantController.likeRestaurant);
 
 restaurantRouter.get('/:id', restaurantController.findOne);
 restaurantRouter.patch('/:id', restaurantController.update);

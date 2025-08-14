@@ -82,5 +82,15 @@ export const restaurantService = {
     return deletingRestaurant;
   },
 
+  likeRestaurant: async (req) => {
+    const { restaurantId, userId } = req.body;
+    const newLike = await prisma.likes.create({
+      data: {
+        restaurant_id: parseInt(restaurantId),
+        user_id: parseInt(userId),
+      }
+    });
 
+    return newLike;
+  }
 };

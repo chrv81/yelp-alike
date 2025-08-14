@@ -45,4 +45,14 @@ export const restaurantController = {
     );
     res.status(response.statusCode).json(response);
   },
+
+  likeRestaurant: async (req, res, next) => {
+    const result = await restaurantService.likeRestaurant(req);
+    const { restaurantId, userId } = req.body;
+    const response = responseSuccess(
+      result,
+      `Like restaurant #${restaurantId} successfully by user ${userId}`
+    );
+    res.status(response.statusCode).json(response);
+  }
 };
