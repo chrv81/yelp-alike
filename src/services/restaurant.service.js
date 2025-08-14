@@ -72,6 +72,15 @@ export const restaurantService = {
   },
 
   remove: async (req) => {
-    return `This action removes a id: ${req.params.id} restaurant`;
+    const { id } = req.params;
+    const restaurantId = parseInt(id);
+
+    const deletingRestaurant = await prisma.restaurants.delete({
+      where: { id: restaurantId }
+    });
+
+    return deletingRestaurant;
   },
+
+
 };
