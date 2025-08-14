@@ -17,6 +17,8 @@ restaurantRouter.delete('/unlikes', restaurantController.deleteLikes);
 // lấy danh sách đánh theo nhà hàng và user
 restaurantRouter.get('/likes/:id', restaurantController.getLikes);
 
+// thêm đánh giá
+restaurantRouter.post('/comments', restaurantController.addComment);
 
 restaurantRouter.get('/:id', restaurantController.findOne);
 restaurantRouter.patch('/:id', restaurantController.update);

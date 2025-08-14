@@ -74,5 +74,15 @@ export const restaurantController = {
       `Get likes of restaurant #${restaurantId} successfully`
     );
     res.status(response.statusCode).json(response);
+  },
+
+  addComment: async (req, res, next) => {
+    const result = await restaurantService.addComment(req);
+    const { restaurantId, userId } = req.body;
+    const response = responseSuccess(
+      result,
+      `Add comment to restaurant #${restaurantId} successfully by user ${userId}`
+    );
+    res.status(response.statusCode).json(response);
   }
 };
