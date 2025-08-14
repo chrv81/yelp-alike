@@ -9,18 +9,26 @@
     "strict": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "checkJs": true,
+    "allowJs": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
       "@/common/*": ["src/common/*"],
       "@/controllers/*": ["src/controllers/*"],
       "@/services/*": ["src/services/*"],
-      "@/routers/*": ["src/routers/*"]
-    }
+      "@/routers/*": ["src/routers/*"],
+      "@/types/*": ["src/types/*"],
+      "@/prisma": ["src/generated/prisma/index.js"]
+    },
+    "typeRoots": ["node_modules/@types", "src/generated"]
   },
   "include": [
     "src/**/*",
-    "*.js"
+    "*.js",
+    "src/generated/**/*"
   ],
   "exclude": [
     "node_modules",

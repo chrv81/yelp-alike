@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+// @ts-nocheck
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
