@@ -46,8 +46,8 @@ export const restaurantController = {
     res.status(response.statusCode).json(response);
   },
 
-  likeRestaurant: async (req, res, next) => {
-    const result = await restaurantService.likeRestaurant(req);
+  sendLikes: async (req, res, next) => {
+    const result = await restaurantService.setLikes(req);
     const { restaurantId, userId } = req.body;
     const response = responseSuccess(
       result,
@@ -56,12 +56,22 @@ export const restaurantController = {
     res.status(response.statusCode).json(response);
   },
 
-  unlikeRestaurant: async (req, res, next) => {
-    const result = await restaurantService.unlikeRestaurant(req);
+  deleteLikes: async (req, res, next) => {
+    const result = await restaurantService.deleteLikes(req);
     const { restaurantId, userId } = req.body;
     const response = responseSuccess(
       result,
       `Unlike restaurant #${restaurantId} successfully by user ${userId}`
+    );
+    res.status(response.statusCode).json(response);
+  },
+
+  getLikes: async (req, res, next) => {
+    const result = await restaurantService.getLikes(req);
+    const { restaurantId } = req.params;
+    const response = responseSuccess(
+      result,
+      `Get likes of restaurant #${restaurantId} successfully`
     );
     res.status(response.statusCode).json(response);
   }

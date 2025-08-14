@@ -82,7 +82,7 @@ export const restaurantService = {
     return deletingRestaurant;
   },
 
-  likeRestaurant: async (req) => {
+  setLikes: async (req) => {
     const { restaurantId, userId } = req.body;
     const newLike = await prisma.likes.create({
       data: {
@@ -94,7 +94,7 @@ export const restaurantService = {
     return newLike;
   },
 
-  unlikeRestaurant: async (req) => {
+  deleteLikes: async (req) => {
     const { restaurantId, userId } = req.body;
     const deletedLike = await prisma.likes.deleteMany({
       where: {
@@ -104,5 +104,22 @@ export const restaurantService = {
     });
 
     return deletedLike;
+  },
+
+  getLikes: async (req) => {
+    const { restaurantId } = req.params;
+    
+    const likes = await prisma.likes.findMany({
+      where: {
+        restaurant_id: parseInt(restaurantId),
+      },
+      include: {
+        Users: {
+          select: { id: true, username: true }
+        }
+      },
+    });
+
+    return likes;
   }
 };
