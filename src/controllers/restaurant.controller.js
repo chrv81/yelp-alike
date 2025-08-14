@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import restaurantService from '../services/restaurant.service';
+import { restaurantService } from '../services/restaurant.service';
 
 import { responseSuccess } from '../common/utilities/response.utility';
 

@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 
@@ -43,3 +44,6 @@ const port = 3069;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+
+// sequelize-auto -h localhost -d yelp-alike -u root -x 1234 -p 3307 --dialect mysql -o src/models/sequelize-auto -l esm -a src/models/additional.json
