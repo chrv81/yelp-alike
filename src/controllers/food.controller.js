@@ -3,19 +3,19 @@ import { foodService } from '../services/food.service';
 import { responseSuccess } from '../common/utilities/response.utility';
 
 export const foodController = {
-  create: async function (req, res, next) {
+  create: async (req, res, next) => {
     const result = await foodService.create(req);
     const response = responseSuccess(result, `Create food successfully`);
     res.status(response.statusCode).json(response);
   },
 
-  findAll: async function (req, res, next) {
+  findAll: async (req, res, next) => {
     const result = await foodService.findAll(req);
     const response = responseSuccess(result, `Get all foods successfully`);
     res.status(response.statusCode).json(response);
   },
 
-  findOne: async function (req, res, next) {
+  findOne: async (req, res, next) => {
     const result = await foodService.findOne(req);
     const response = responseSuccess(
       result,
@@ -24,7 +24,7 @@ export const foodController = {
     res.status(response.statusCode).json(response);
   },
 
-  update: async function (req, res, next) {
+  update: async (req, res, next) => {
     const result = await foodService.update(req);
     const response = responseSuccess(
       result,
@@ -33,7 +33,7 @@ export const foodController = {
     res.status(response.statusCode).json(response);
   },
 
-  remove: async function (req, res, next) {
+  remove: async (req, res, next) => {
     const result = await foodService.remove(req);
     const response = responseSuccess(
       result,
