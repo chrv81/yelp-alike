@@ -4,3 +4,5 @@ logs
 .DS_Store
 package-lock.json
 /src/generated/prisma
+
+/src/generated/prisma

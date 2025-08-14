@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model Comments {
+  id            Int          @id @default(autoincrement())
+  content       String?      @db.Text
+  user_id       Int?
+  restaurant_id Int?
+  rating        Int?
+  Users         Users?       @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Comments_ibfk_1")
+  Restaurants   Restaurants? @relation(fields: [restaurant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Comments_ibfk_2")
+
+  @@index([restaurant_id], map: "restaurant_id")
+  @@index([user_id], map: "user_id")
+}
+
+model Likes {
+  id            Int          @id @default(autoincrement())
+  user_id       Int?
+  restaurant_id Int?
+  Users         Users?       @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Likes_ibfk_1")
+  Restaurants   Restaurants? @relation(fields: [restaurant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Likes_ibfk_2")
+
+  @@index([restaurant_id], map: "restaurant_id")
+  @@index([user_id], map: "user_id")
+}
+
+model Restaurants {
+  id       Int        @id @default(autoincrement())
+  name     String     @db.VarChar(255)
+  address  String?    @db.VarChar(255)
+  cuisine  String?    @db.VarChar(100)
+  createAt DateTime?  @db.Timestamp(0)
+  Comments Comments[]
+  Likes    Likes[]
+}
+
+model Users {
+  id        Int        @id @default(autoincrement())
+  username  String     @unique(map: "username") @db.VarChar(50)
+  email     String     @unique(map: "email") @db.VarChar(100)
+  password  String     @db.VarChar(255)
+  createdAt DateTime?  @db.Timestamp(0)
+  Comments  Comments[]
+  Likes     Likes[]
+}
