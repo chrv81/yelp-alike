@@ -1,3 +1,4 @@
+import { where } from "sequelize";
 import prisma from "../common/prisma/init.prisma.js";
 
 export const restaurantService = {
@@ -17,11 +18,53 @@ export const restaurantService = {
   },
 
   findAll: async (req) => {
-    return `This action returns all restaurant`;
+    const restaurants = await prisma.restaurants.findMany({
+      include: {
+        Comments: {
+          include: {
+            Users: {
+              select: { id: true, username: true }
+            }
+          }
+        },
+        Likes: {
+          include: {
+            Users: {
+              select: { id: true, username: true }
+            }
+          }
+        }
+      }
+    });
+
+    return restaurants;
   },
 
   findOne: async (req) => {
-    return `This action returns a id: ${req.params.id} restaurant`;
+    const { id } = req.params;
+    const restaurantId = parseInt(id);
+
+    const restaurant = await prisma.restaurants.findUnique({
+      where: { id: restaurantId },
+      include: {
+        Comments: {
+          include: {
+            Users: {
+              select: { id: true, username: true }
+            }
+          }
+        },
+        Likes: {
+          include: {
+            Users: {
+              select: { id: true, username: true }
+            }
+          }
+        }
+      }
+    });
+
+    return restaurant;
   },
 
   update: async (req) => {
