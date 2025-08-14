@@ -1,6 +1,19 @@
+import prisma from "../common/prisma/init.prisma.js";
+
 export const restaurantService = {
   create: async (req) => {
-    return `This action create`;
+    const { name, cuisine, address } = req.body;
+
+    const newRestaurant = await prisma.restaurants.create({
+      data: {
+        name,
+        cuisine,
+        address,
+        createAt: new Date()
+      }
+    });
+
+    return newRestaurant;
   },
 
   findAll: async (req) => {
