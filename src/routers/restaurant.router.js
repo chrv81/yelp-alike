@@ -24,8 +24,9 @@ restaurantRouter.get('/likes/:id', restaurantController.getLikes);
 // lấy danh sách ddasnh gía theo nhà hàng và user
 restaurantRouter.get('/comments/:id', restaurantController.getComments);
 
-restaurantRouter.get('/:id', restaurantController.findOne);
-restaurantRouter.patch('/:id', restaurantController.update);
-restaurantRouter.delete('/:id', restaurantController.remove);
+// TODO: mốt làm tiếp... (hổng có trong bài tập nên tính sau)
+// restaurantRouter.get('/:id', restaurantController.findOne);
+// restaurantRouter.patch('/:id', restaurantController.update);
+// restaurantRouter.delete('/:id', restaurantController.remove);
 
 export default restaurantRouter;
