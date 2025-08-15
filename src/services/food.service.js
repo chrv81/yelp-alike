@@ -1,6 +1,24 @@
+import prisma from "../common/prisma/init.prisma.js";
+
 export const foodService = {
+   // TODO: test this
    create: async (req) => {
-      return `This action create`;
+      const { name, price, image, description, restaurantId, isAvailable } = req.body;
+
+      const id = parseInt(restaurantId);
+
+      const newFood = await prisma.food.create({
+         data: {
+            name,
+            price: parseFloat(price),
+            image,
+            description,
+            restaurant_id: id,
+            isAvailable
+         }
+      });
+
+      return newFood;
    },
 
    findAll: async (req) => {
