@@ -40,6 +40,28 @@ CREATE TABLE `Likes` (
   FOREIGN KEY (restaurant_id) REFERENCES `Restaurants`(id)
 );
 
+-- foods
+CREATE TABLE `Food` (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(255),
+	price DECIMAL,
+	image VARCHAR(255),
+	description TEXT,
+	restaurant_id INT,
+	isAvailable BOOLEAN,
+	
+	FOREIGN KEY (restaurant_id) REFERENCES `Restaurants`(id)
+);
+
+-- orders
+CREATE TABLE `Orders` (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	orderBy TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	user_id INT,
+	
+	FOREIGN KEY (user_id) REFERENCES `Users`(id)
+);
+
 -- Add data into the table
 INSERT INTO `Restaurants` (name, address, cuisine, createAt) VALUES
   ('Phở Thìn', '13 Lò Đúc, Hà Nội', 'Phở', CURRENT_TIMESTAMP),
@@ -115,3 +137,29 @@ INSERT INTO `Likes` (user_id, restaurant_id) VALUES
   (6, 6), (7, 7), (8, 8), (9, 9), (10, 10),
   (6, 7), (7, 8), (8, 9), (9, 10), (10, 6),
   (6, 8), (7, 9), (8, 10), (9, 6), (10, 7);
+
+INSERT INTO `Food` (name, price, image, description, restaurant_id, isAvailable)
+VALUES
+  ('Phở bò', 45000, 'pho_bo.jpg', 'Phở bò truyền thống với nước dùng đậm đà.', 1, TRUE),
+  ('Bún chả', 40000, 'bun_cha.jpg', 'Bún chả Hà Nội, thịt nướng thơm ngon.', 2, TRUE),
+  ('Cơm tấm sườn', 50000, 'com_tam_suon.jpg', 'Cơm tấm sườn bì chả đặc sản Sài Gòn.', 3, TRUE),
+  ('Bánh mì thịt', 25000, 'banh_mi_thit.jpg', 'Bánh mì thịt nguội, pate béo ngậy.', 4, TRUE),
+  ('Gỏi cuốn', 30000, 'goi_cuon.jpg', 'Gỏi cuốn tôm thịt, nước chấm đặc biệt.', 5, TRUE),
+  ('Bún riêu cua', 35000, 'bun_rieu_cua.jpg', 'Bún riêu cua đồng, rau sống tươi ngon.', 6, TRUE),
+  ('Lẩu cá đuối', 120000, 'lau_ca_duoi.jpg', 'Lẩu cá đuối cay nồng, rau xanh.', 7, TRUE),
+  ('Bánh cuốn', 30000, 'banh_cuon.jpg', 'Bánh cuốn nóng, nước mắm chua ngọt.', 8, TRUE),
+  ('Cháo lòng', 35000, 'chao_long.jpg', 'Cháo lòng thơm ngon, lòng giòn.', 9, TRUE),
+  ('Bún mắm', 40000, 'bun_mam.jpg', 'Bún mắm miền Tây, hải sản tươi.', 10, TRUE);
+
+INSERT INTO `Orders` (user_id, orderBy)
+VALUES
+  (1, '2024-02-01 08:15:00'),
+  (3, '2024-02-02 12:30:00'),
+  (5, '2024-02-03 18:45:00'),
+  (2, '2024-02-04 09:20:00'),
+  (7, '2024-02-05 14:10:00'),
+  (4, '2024-02-06 19:55:00'),
+  (6, '2024-02-07 11:05:00'),
+  (8, '2024-02-08 16:40:00'),
+  (9, '2024-02-09 07:50:00'),
+  (10, '2024-02-10 13:25:00');

@@ -41,6 +41,7 @@ model Restaurants {
   cuisine  String?    @db.VarChar(100)
   createAt DateTime?  @db.Timestamp(0)
   Comments Comments[]
+  Food     Food[]
   Likes    Likes[]
 }
 
@@ -52,4 +53,27 @@ model Users {
   createdAt DateTime?  @db.Timestamp(0)
   Comments  Comments[]
   Likes     Likes[]
+  Orders    Orders[]
+}
+
+model Food {
+  id            Int          @id @default(autoincrement())
+  name          String?      @db.VarChar(255)
+  price         Decimal?     @db.Decimal(10, 0)
+  image         String?      @db.VarChar(255)
+  description   String?      @db.Text
+  restaurant_id Int?
+  isAvailable   Boolean?
+  Restaurants   Restaurants? @relation(fields: [restaurant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Food_ibfk_1")
+
+  @@index([restaurant_id], map: "restaurant_id")
+}
+
+model Orders {
+  id      Int       @id @default(autoincrement())
+  orderBy DateTime? @default(now()) @db.Timestamp(0)
+  user_id Int?
+  Users   Users?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Orders_ibfk_1")
+
+  @@index([user_id], map: "user_id")
 }
