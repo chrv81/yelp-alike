@@ -9,7 +9,8 @@
     "dev": "nodemon --import=extensionless/register src/server.js",
     "start": "node --import=extensionless/register src/server.js",
     "prisma": "npx prisma db pull && npx prisma generate",
-    "sequelize": "npx sequelize-auto -o './src/models/sequelize-auto' -d yelp-alike -h localhost -u root -p 3307 -e mysql"
+    "sequelize": "npx sequelize-auto -o './src/models/sequelize-auto' -d yelp-alike -h localhost -u root -p 3307 -e mysql",
+    "format:fix": "npx prettier --write ."
   },
   "author": "Chris Vo / Vo H. Viet Tu",
   "license": "ISC",
