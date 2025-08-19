@@ -1,5 +1,5 @@
-import { responseSuccess } from "@/common/utilities/response.utility";
-import { orderService } from "@/services/order.service";
+import { responseSuccess } from "../common/utilities/response.utility";
+import { orderService } from "../services/order.service";
 
 export const orderController = {
   create: async (req, res, next) => {

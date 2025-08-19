@@ -14,15 +14,6 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"],
-      "@/common/*": ["src/common/*"],
-      "@/controllers/*": ["src/controllers/*"],
-      "@/services/*": ["src/services/*"],
-      "@/routers/*": ["src/routers/*"],
-      "@/types/*": ["src/types/*"],
-      "@/prisma": ["src/generated/prisma/index.js"]
-    },
     "typeRoots": ["node_modules/@types", "src/generated"]
   },
   "include": [
