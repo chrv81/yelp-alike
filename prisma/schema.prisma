@@ -65,15 +65,21 @@ model Food {
   restaurant_id Int?
   isAvailable   Boolean?
   Restaurants   Restaurants? @relation(fields: [restaurant_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Food_ibfk_1")
+  Orders        Orders[]
 
   @@index([restaurant_id], map: "restaurant_id")
 }
 
 model Orders {
-  id      Int       @id @default(autoincrement())
-  orderBy DateTime? @default(now()) @db.Timestamp(0)
-  user_id Int?
-  Users   Users?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Orders_ibfk_1")
+  id       Int       @id @default(autoincrement())
+  orderBy  DateTime? @default(now()) @db.Timestamp(0)
+  user_id  Int?
+  food_id  Int?
+  quantity Int?      @default(1)
+  price    Decimal?  @db.Decimal(10, 2)
+  Users    Users?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Orders_ibfk_1")
+  Food     Food?     @relation(fields: [food_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "Orders_ibfk_2")
 
   @@index([user_id], map: "user_id")
+  @@index([food_id], map: "food_id")
 }

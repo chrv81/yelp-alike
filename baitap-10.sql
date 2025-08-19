@@ -138,6 +138,8 @@ INSERT INTO `Likes` (user_id, restaurant_id) VALUES
   (6, 7), (7, 8), (8, 9), (9, 10), (10, 6),
   (6, 8), (7, 9), (8, 10), (9, 6), (10, 7);
 
+
+-- thêm dữ liệu cho bảng Food
 INSERT INTO `Food` (name, price, image, description, restaurant_id, isAvailable)
 VALUES
   ('Phở bò', 45000, 'pho_bo.jpg', 'Phở bò truyền thống với nước dùng đậm đà.', 1, TRUE),
@@ -151,6 +153,7 @@ VALUES
   ('Cháo lòng', 35000, 'chao_long.jpg', 'Cháo lòng thơm ngon, lòng giòn.', 9, TRUE),
   ('Bún mắm', 40000, 'bun_mam.jpg', 'Bún mắm miền Tây, hải sản tươi.', 10, TRUE);
 
+-- Thêm dữ liệu cho bảng Orders
 INSERT INTO `Orders` (user_id, orderBy)
 VALUES
   (1, '2024-02-01 08:15:00'),
@@ -163,3 +166,20 @@ VALUES
   (8, '2024-02-08 16:40:00'),
   (9, '2024-02-09 07:50:00'),
   (10, '2024-02-10 13:25:00');
+
+-- Bỏ thêm thông tin thiếu sót
+ALTER TABLE `Orders` ADD COLUMN food_id INT;
+ALTER TABLE `Orders` ADD COLUMN quantity INT DEFAULT 1;
+ALTER TABLE `Orders` ADD COLUMN price DECIMAL(10,2);
+ALTER TABLE `Orders` ADD FOREIGN KEY (food_id) REFERENCES `Food`(id);
+
+UPDATE `Orders` SET food_id = 1, quantity = 2, price = 45000 WHERE id = 1;
+UPDATE `Orders` SET food_id = 2, quantity = 1, price = 40000 WHERE id = 2;
+UPDATE `Orders` SET food_id = 3, quantity = 1, price = 50000 WHERE id = 3;
+UPDATE `Orders` SET food_id = 4, quantity = 3, price = 25000 WHERE id = 4;
+UPDATE `Orders` SET food_id = 5, quantity = 2, price = 30000 WHERE id = 5;
+UPDATE `Orders` SET food_id = 6, quantity = 1, price = 35000 WHERE id = 6;
+UPDATE `Orders` SET food_id = 7, quantity = 1, price = 120000 WHERE id = 7;
+UPDATE `Orders` SET food_id = 8, quantity = 2, price = 30000 WHERE id = 8;
+UPDATE `Orders` SET food_id = 9, quantity = 1, price = 35000 WHERE id = 9;
+UPDATE `Orders` SET food_id = 10, quantity = 1, price = 40000 WHERE id = 10;

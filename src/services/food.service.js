@@ -1,7 +1,6 @@
 import prisma from "../common/prisma/init.prisma.js";
 
 export const foodService = {
-   // TODO: test this
    create: async (req) => {
       const { name, price, image, description, restaurantId, isAvailable } = req.body;
 
@@ -22,7 +21,13 @@ export const foodService = {
    },
 
    findAll: async (req) => {
-      return `This action returns all food`;
+      const allFood = await prisma.food.findMany({
+         include: {
+            Restaurants: true
+         }
+      });
+
+      return allFood;
    },
 
    findOne: async (req) => {
