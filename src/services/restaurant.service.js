@@ -1,6 +1,6 @@
-import { where } from "sequelize";
-import prisma from "../common/prisma/init.prisma.js";
-import { BadResquestException } from "../common/utilities/exception.utility.js";
+import { where } from 'sequelize';
+import prisma from '../common/prisma/init.prisma.js';
+import { BadResquestException } from '../common/utilities/exception.utility.js';
 
 export const restaurantService = {
   create: async (req) => {
@@ -11,8 +11,8 @@ export const restaurantService = {
         name,
         cuisine,
         address,
-        createAt: new Date()
-      }
+        createAt: new Date(),
+      },
     });
 
     return newRestaurant;
@@ -24,18 +24,18 @@ export const restaurantService = {
         Comments: {
           include: {
             Users: {
-              select: { id: true, username: true }
-            }
-          }
+              select: { id: true, username: true },
+            },
+          },
         },
         Likes: {
           include: {
             Users: {
-              select: { id: true, username: true }
-            }
-          }
-        }
-      }
+              select: { id: true, username: true },
+            },
+          },
+        },
+      },
     });
 
     return restaurants;
@@ -51,18 +51,18 @@ export const restaurantService = {
         Comments: {
           include: {
             Users: {
-              select: { id: true, username: true }
-            }
-          }
+              select: { id: true, username: true },
+            },
+          },
         },
         Likes: {
           include: {
             Users: {
-              select: { id: true, username: true }
-            }
-          }
-        }
-      }
+              select: { id: true, username: true },
+            },
+          },
+        },
+      },
     });
 
     return restaurant;
@@ -77,7 +77,7 @@ export const restaurantService = {
     const restaurantId = parseInt(id);
 
     const deletingRestaurant = await prisma.restaurants.delete({
-      where: { id: restaurantId }
+      where: { id: restaurantId },
     });
 
     return deletingRestaurant;
@@ -89,7 +89,7 @@ export const restaurantService = {
       data: {
         restaurant_id: parseInt(restaurantId),
         user_id: parseInt(userId),
-      }
+      },
     });
 
     return newLike;
@@ -101,7 +101,7 @@ export const restaurantService = {
       where: {
         restaurant_id: parseInt(restaurantId),
         user_id: parseInt(userId),
-      }
+      },
     });
 
     return deletedLike;
@@ -109,15 +109,15 @@ export const restaurantService = {
 
   getLikes: async (req) => {
     const { id } = req.params;
-    
+
     const likes = await prisma.likes.findMany({
       where: {
         restaurant_id: parseInt(id),
       },
       include: {
         Users: {
-          select: { id: true, username: true }
-        }
+          select: { id: true, username: true },
+        },
       },
     });
 
@@ -136,8 +136,8 @@ export const restaurantService = {
         restaurant_id: parseInt(restaurantId),
         user_id: parseInt(userId),
         content,
-        rating: parseInt(rating)
-      }
+        rating: parseInt(rating),
+      },
     });
 
     return newComment;
@@ -150,14 +150,14 @@ export const restaurantService = {
       where: { restaurant_id: parseInt(restaurantId) },
       include: {
         Users: {
-          select: { id: true, username: true }
+          select: { id: true, username: true },
         },
         Restaurants: {
-          select: { id: true, name: true }
-        }
-      }
+          select: { id: true, name: true },
+        },
+      },
     });
 
     return comments;
-  }
+  },
 };

@@ -94,5 +94,5 @@ export const restaurantController = {
       `Get comments of restaurant #${restaurantId} successfully`
     );
     res.status(response.statusCode).json(response);
-  }
+  },
 };

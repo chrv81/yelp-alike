@@ -16,14 +16,6 @@
     "baseUrl": ".",
     "typeRoots": ["node_modules/@types", "src/generated"]
   },
-  "include": [
-    "src/**/*",
-    "*.js",
-    "src/generated/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "build"
-  ]
+  "include": ["src/**/*", "*.js", "src/generated/**/*"],
+  "exclude": ["node_modules", "dist", "build"]
 }

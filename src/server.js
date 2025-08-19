@@ -45,5 +45,4 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
-
 // sequelize-auto -h localhost -d yelp-alike -u root -x 1234 -p 3307 --dialect mysql -o src/models/sequelize-auto -l esm -a src/models/additional.json
