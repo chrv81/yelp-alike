@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { foodService } from '../services/food.service';
-import { responseSuccess } from '../common/utilities/response.utility';
+import { foodService } from "../services/food.service";
+import { responseSuccess } from "../common/utilities/response.utility";
 
 export const foodController = {
   create: async (req, res, next) => {
@@ -19,7 +19,7 @@ export const foodController = {
     const result = await foodService.findOne(req);
     const response = responseSuccess(
       result,
-      `Get food #${req.params.id} successfully`
+      `Get food #${req.params.id} successfully`,
     );
     res.status(response.statusCode).json(response);
   },
@@ -28,7 +28,7 @@ export const foodController = {
     const result = await foodService.update(req);
     const response = responseSuccess(
       result,
-      `Update food #${req.params.id} successfully`
+      `Update food #${req.params.id} successfully`,
     );
     res.status(response.statusCode).json(response);
   },
@@ -37,7 +37,7 @@ export const foodController = {
     const result = await foodService.remove(req);
     const response = responseSuccess(
       result,
-      `Remove food #${req.params.id} successfully`
+      `Remove food #${req.params.id} successfully`,
     );
     res.status(response.statusCode).json(response);
   },

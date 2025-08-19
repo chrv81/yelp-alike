@@ -1,4 +1,4 @@
-import prisma from '../common/prisma/init.prisma';
+import prisma from "../common/prisma/init.prisma";
 
 export const orderService = {
   create: async (req) => {
@@ -40,7 +40,7 @@ export const orderService = {
           },
         },
       },
-      orderBy: { orderBy: 'desc' },
+      orderBy: { orderBy: "desc" },
     });
 
     return allOrders;

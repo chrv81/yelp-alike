@@ -25,5 +25,8 @@
     "prisma": "^6.14.0",
     "sequelize": "^6.37.7",
     "sequelize-auto": "^0.8.8"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
   }
 }
