@@ -1,4 +1,4 @@
-import _sequelize from "sequelize";
+import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
 export default class Restaurants extends Model {
@@ -30,17 +30,17 @@ export default class Restaurants extends Model {
       },
       {
         sequelize,
-        tableName: "Restaurants",
+        tableName: 'Restaurants',
         timestamps: false,
         indexes: [
           {
-            name: "PRIMARY",
+            name: 'PRIMARY',
             unique: true,
-            using: "BTREE",
-            fields: [{ name: "id" }],
+            using: 'BTREE',
+            fields: [{ name: 'id' }],
           },
         ],
-      },
+      }
     );
   }
 }

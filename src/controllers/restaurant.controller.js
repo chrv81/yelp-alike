@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { restaurantService } from "../services/restaurant.service.js";
+import { restaurantService } from '../services/restaurant.service.js';
 
-import { responseSuccess } from "../common/utilities/response.utility.js";
+import { responseSuccess } from '../common/utilities/response.utility.js';
 
 export const restaurantController = {
   create: async (req, res, next) => {
@@ -14,7 +14,7 @@ export const restaurantController = {
     const result = await restaurantService.findAll(req);
     const response = responseSuccess(
       result,
-      `Get all restaurants successfully`,
+      `Get all restaurants successfully`
     );
     res.status(response.statusCode).json(response);
   },
@@ -23,7 +23,7 @@ export const restaurantController = {
     const result = await restaurantService.findOne(req);
     const response = responseSuccess(
       result,
-      `Get restaurant #${req.params.id} successfully`,
+      `Get restaurant #${req.params.id} successfully`
     );
     res.status(response.statusCode).json(response);
   },
@@ -32,7 +32,7 @@ export const restaurantController = {
     const result = await restaurantService.update(req);
     const response = responseSuccess(
       result,
-      `Update restaurant #${req.params.id} successfully`,
+      `Update restaurant #${req.params.id} successfully`
     );
     res.status(response.statusCode).json(response);
   },
@@ -41,7 +41,7 @@ export const restaurantController = {
     const result = await restaurantService.remove(req);
     const response = responseSuccess(
       result,
-      `Remove restaurant #${req.params.id} successfully`,
+      `Remove restaurant #${req.params.id} successfully`
     );
     res.status(response.statusCode).json(response);
   },
@@ -51,7 +51,7 @@ export const restaurantController = {
     const { restaurantId, userId } = req.body;
     const response = responseSuccess(
       result,
-      `Like restaurant #${restaurantId} successfully by user ${userId}`,
+      `Like restaurant #${restaurantId} successfully by user ${userId}`
     );
     res.status(response.statusCode).json(response);
   },
@@ -61,7 +61,7 @@ export const restaurantController = {
     const { restaurantId, userId } = req.body;
     const response = responseSuccess(
       result,
-      `Unlike restaurant #${restaurantId} successfully by user ${userId}`,
+      `Unlike restaurant #${restaurantId} successfully by user ${userId}`
     );
     res.status(response.statusCode).json(response);
   },
@@ -71,7 +71,7 @@ export const restaurantController = {
     const { id } = req.params;
     const response = responseSuccess(
       result,
-      `Get likes of restaurant #${id} successfully`,
+      `Get likes of restaurant #${id} successfully`
     );
     res.status(response.statusCode).json(response);
   },
@@ -81,7 +81,7 @@ export const restaurantController = {
     const { restaurantId, userId } = req.body;
     const response = responseSuccess(
       result,
-      `Add comment to restaurant #${restaurantId} successfully by user ${userId}`,
+      `Add comment to restaurant #${restaurantId} successfully by user ${userId}`
     );
     res.status(response.statusCode).json(response);
   },
@@ -91,7 +91,7 @@ export const restaurantController = {
     const { id: restaurantId } = req.params;
     const response = responseSuccess(
       result,
-      `Get comments of restaurant #${restaurantId} successfully`,
+      `Get comments of restaurant #${restaurantId} successfully`
     );
     res.status(response.statusCode).json(response);
   },

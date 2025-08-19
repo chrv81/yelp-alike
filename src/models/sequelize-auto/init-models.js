@@ -1,4 +1,4 @@
-var DataTypes = require("sequelize").DataTypes;
+var DataTypes = require('sequelize').DataTypes;
 
 function initModels(sequelize) {
   return {};

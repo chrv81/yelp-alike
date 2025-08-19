@@ -1,6 +1,6 @@
-import mysql from "mysql2/promise";
+import mysql from 'mysql2/promise';
 
-import { DATABASE_URL } from "../constants/app.constant";
+import { DATABASE_URL } from '../constants/app.constant';
 
 // Create the connection pool. The pool-specific settings are the defaults
 const pool = mysql.createPool({
@@ -15,10 +15,10 @@ const pool = mysql.createPool({
 });
 
 try {
-  await pool.query("SELECT 1+1 AS result");
-  console.info("MYSQL2: \t Connection successfully");
+  await pool.query('SELECT 1+1 AS result');
+  console.info('MYSQL2: \t Connection successfully');
 } catch (error) {
-  console.error("MYSQL2: \t Error connecting to MySQL2:", error);
+  console.error('MYSQL2: \t Error connecting to MySQL2:', error);
 }
 
 export default pool;

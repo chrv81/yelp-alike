@@ -1,9 +1,9 @@
-import jwt from "jsonwebtoken";
-import { responseError } from "../utilities/response.utility";
-import { statusCodes } from "../utilities/status-code.utility";
+import jwt from 'jsonwebtoken';
+import { responseError } from '../utilities/response.utility';
+import { statusCodes } from '../utilities/status-code.utility';
 
 export const appError = (err, req, res, next) => {
-  console.log("middleware appError executed");
+  console.log('middleware appError executed');
 
   // 401 - logout
   // 403 - api refresh-token

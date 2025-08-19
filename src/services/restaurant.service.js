@@ -1,6 +1,6 @@
-import { where } from "sequelize";
-import prisma from "../common/prisma/init.prisma.js";
-import { BadResquestException } from "../common/utilities/exception.utility.js";
+import { where } from 'sequelize';
+import prisma from '../common/prisma/init.prisma.js';
+import { BadResquestException } from '../common/utilities/exception.utility.js';
 
 export const restaurantService = {
   create: async (req) => {
@@ -128,7 +128,7 @@ export const restaurantService = {
     const { restaurantId, userId, content, rating } = req.body;
 
     if (rating < 1 || rating > 5) {
-      throw new BadResquestException("Rating must be between 1 and 5");
+      throw new BadResquestException('Rating must be between 1 and 5');
     }
 
     const newComment = await prisma.comments.create({

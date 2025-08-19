@@ -1,4 +1,4 @@
-import _sequelize from "sequelize";
+import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
 export default class Users extends Model {
@@ -14,12 +14,12 @@ export default class Users extends Model {
         username: {
           type: DataTypes.STRING(50),
           allowNull: false,
-          unique: "username",
+          unique: 'username',
         },
         email: {
           type: DataTypes.STRING(100),
           allowNull: false,
-          unique: "email",
+          unique: 'email',
         },
         password: {
           type: DataTypes.STRING(255),
@@ -28,29 +28,29 @@ export default class Users extends Model {
       },
       {
         sequelize,
-        tableName: "Users",
+        tableName: 'Users',
         timestamps: true,
         indexes: [
           {
-            name: "PRIMARY",
+            name: 'PRIMARY',
             unique: true,
-            using: "BTREE",
-            fields: [{ name: "id" }],
+            using: 'BTREE',
+            fields: [{ name: 'id' }],
           },
           {
-            name: "username",
+            name: 'username',
             unique: true,
-            using: "BTREE",
-            fields: [{ name: "username" }],
+            using: 'BTREE',
+            fields: [{ name: 'username' }],
           },
           {
-            name: "email",
+            name: 'email',
             unique: true,
-            using: "BTREE",
-            fields: [{ name: "email" }],
+            using: 'BTREE',
+            fields: [{ name: 'email' }],
           },
         ],
-      },
+      }
     );
   }
 }

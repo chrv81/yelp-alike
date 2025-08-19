@@ -1,4 +1,4 @@
-import _sequelize from "sequelize";
+import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
 export default class Likes extends Model {
@@ -15,42 +15,42 @@ export default class Likes extends Model {
           type: DataTypes.INTEGER,
           allowNull: true,
           references: {
-            model: "Users",
-            key: "id",
+            model: 'Users',
+            key: 'id',
           },
         },
         restaurant_id: {
           type: DataTypes.INTEGER,
           allowNull: true,
           references: {
-            model: "Restaurants",
-            key: "id",
+            model: 'Restaurants',
+            key: 'id',
           },
         },
       },
       {
         sequelize,
-        tableName: "Likes",
+        tableName: 'Likes',
         timestamps: false,
         indexes: [
           {
-            name: "PRIMARY",
+            name: 'PRIMARY',
             unique: true,
-            using: "BTREE",
-            fields: [{ name: "id" }],
+            using: 'BTREE',
+            fields: [{ name: 'id' }],
           },
           {
-            name: "user_id",
-            using: "BTREE",
-            fields: [{ name: "user_id" }],
+            name: 'user_id',
+            using: 'BTREE',
+            fields: [{ name: 'user_id' }],
           },
           {
-            name: "restaurant_id",
-            using: "BTREE",
-            fields: [{ name: "restaurant_id" }],
+            name: 'restaurant_id',
+            using: 'BTREE',
+            fields: [{ name: 'restaurant_id' }],
           },
         ],
-      },
+      }
     );
   }
 }
