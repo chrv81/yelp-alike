@@ -90,8 +90,8 @@ Viết các API theo các chức năng như sau với database db_food đã tạ
 - **Mô tả:** Người dùng đặt món ăn.
 
 ### 3.2. Lấy danh sách order theo user
-- **URL:** `GET /orders?userId=1`
-- **Query:** `userId` (number)
+- **URL:** `GET /orders/user/:user_id`
+  - ví dụ: `GET /orders?userId=1`
 - **Mô tả:** Lấy danh sách order của một người dùng.
 
 ### 3.3. Lấy chi tiết order theo id
